@@ -9,6 +9,7 @@ class blogController {
   static async getBlogs(req, res) {
     try {
       const blogs= await Blog.find()
+      console.log(blogs);
       res.status(200).json({
         data:blogs
         
@@ -48,20 +49,39 @@ class blogController {
   }
   // create blog
   static async createBlog(req, res) {
+    const {title, content ,image} =req.body
+    if (!title || !content) 
+{return res.status(400).json({
+  message:" Title and content of blog are all required"})}
+  const dublicate = await Blog.findOne({title:req.body.title});
+ if (dublicate) {
+
+    return res.status(400).json({
+      message:"the blog is already found"
+    })
+  }
+
+else {
+
+
     try {
       const { image,title, content } = req.body;
       const newBlog = await Blog.create({image,title, content});
-      res.status(201).json({
+
+
+         
+          return res.status(201).json({
         message: "New blog created successfully",
         data: newBlog
-      });
-    } catch (error) {
+      })}
+     catch (error) {
         return res.status(500).json({
             message: "no new blog created"
           });
     }
+  
+}
   }
-
   // update blog
   static async updateBlog(req, res) {
     try {

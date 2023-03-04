@@ -3,6 +3,7 @@ import dotenv from "dotenv";
 import cors from "cors";
 import bodyParser from "body-parser";
 import mongoose from "mongoose";
+import multer  from "multer";
 
 import allRoutes from "./routes/allRoutes.js"
 
@@ -33,8 +34,28 @@ const host = process.env.HOST;
 // database some variables
 const con =()=> mongoose.connect(process.env.MONGODB_URL,{
   useNewUrlParser:true,
-  useUnifiedTopology:true
+  useUnifiedTopology:true,
 });
+
+// The image upload
+
+const upload = multer({
+  storage:multer.diskStorage({
+    destination:function(req,file,cb)
+    {
+      cb(null,"src/Images")
+    },
+    filename:function(req,file,cb)
+    {
+      cb(null,file.fieldname +"-" +Date.now()+".jpg")
+    }
+  })
+}).single("images")
+
+app.post("/upload",upload, (req,res)=>{
+  res.send("file upload")
+  
+})
 
 
 // instance to listen to our server

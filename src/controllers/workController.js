@@ -1,6 +1,5 @@
 import Work from "../model/work.js";
-// import { blogs } from "../model/dummy.js";
-// import errorFunc from "../utils/errorFunc.js";
+
 
 
 class workController {
@@ -9,6 +8,7 @@ class workController {
   static async getWorks(req, res) {
     try {
       const works= await Work.find()
+      console.log(works);
       res.status(200).json({
         data:works
         
@@ -23,7 +23,7 @@ class workController {
   };
 
 
-  // get one blog
+  // get one work
   static async getWork(req, res) {
     try {
       const { id } = req.params; // using ES6
@@ -35,6 +35,7 @@ class workController {
           message: `Work with id: ${id} was not found`
         });
       } else {
+        
         return res.status(200).json({
           data: work
         });
@@ -48,6 +49,21 @@ class workController {
   }
   // create Work
   static async createWork(req, res) {
+    const {title, content ,image} =req.body
+    if (!title || !content) 
+{return res.status(400).json({
+  message:" Title and content of work are all required"})}
+  const dublicate = await Work.findOne({title:req.body.title});
+ if (dublicate) {
+
+    return res.status(400).json({
+      message:"the work is already found"
+    })
+  }
+
+else {
+    
+    
     try {
       const { image,title, content } = req.body;
       const newWork = await Work.create({image,title, content});
@@ -61,7 +77,7 @@ class workController {
           });
     }
   }
-
+}
   // update work
   static async updateWork(req, res) {
     try {
