@@ -3,7 +3,7 @@ import User from '../model/user.js'
 
 class signupController{
     static async getUser(req, res) {
-    const {fullname, email ,password} =req.body;
+    const {fullname, email ,password,isAdmin} =req.body;
 if (!fullname || !email|| !password) 
 {return res.status(400).json({
   message:"names, email and password are all required"})}
@@ -21,7 +21,7 @@ else{
 
     // create
 
-    const newUser = await User.create({fullname,email,password: hashedPassword})
+    const newUser = await User.create({fullname,email,isAdmin,password: hashedPassword})
   
     console.log(newUser)
   res.status(201).json({

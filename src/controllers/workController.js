@@ -27,8 +27,6 @@ class workController {
   static async getWork(req, res) {
     try {
       const { id } = req.params; // using ES6
-     
-
       const work = await Work.findone({_id:id});
       if (!blog) {
         return res.status(404).json({
@@ -119,9 +117,14 @@ else {
       // condition
       if (workdeleted === -1) {
         return res.status(404).json({
-          message: `Blog with id: ${id} was not found`
+          message: `work with id: ${id} was not found`
         });
       } else {
+        if (!workdeleted){
+          return res.status(404).json({
+            message:"this work is not found"
+          })
+        }
           return res.status(200).json({
           message: "Work deleted successfully",
         });

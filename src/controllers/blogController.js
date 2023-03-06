@@ -126,6 +126,11 @@ else {
           message: `Blog with id: ${id} was not found`
         });
       } else {
+        if (!blogdeleted){
+          return res.status(404).json({
+            message:"this blog is not found"
+          })
+        }
           return res.status(200).json({
           message: "Blog deleted successfully",
         });

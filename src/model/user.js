@@ -19,9 +19,17 @@ const userSchema = new mongoose.Schema({
     required: true,
     minLength:6
  },
+ isAdmin: {
+   type: Boolean,
+   required:true,
+   default:false
+
+
+ },
  createdAt:  {
     type:String,
     default: Date.now
+   
  }
 })
 // define the compare password function (this help to compare the harshed password and the entered password)

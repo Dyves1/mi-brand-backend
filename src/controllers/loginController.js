@@ -9,7 +9,7 @@ try {
     // find user with the email
     const user = await User.findOne({email})
     if (!user){
-        returnres.status(400).json(
+        return res.status(400).json(
             {message :"invalid Credentials"}
         )
     }
@@ -20,18 +20,27 @@ try {
             message:"invalid Credentials"
         })
        }
+
        else {
-        const token = jwt.sign({userId:user._id},process.env.SECRETE_KEY)
-        console.log(token)
+        // const token = jwt.sign({userId:user.email},process.env.SECRETE_KEY,{expiresIn:"2h"})
+           const token =jwt.sign({userId:user.email,isAdmin:user.isAdmin},process.env.SECRETE_KEY,{expiresIn:"2d"})
         return res.status(200).json({
-            data:user,
-            token:token
+            data:{
+                
+                email:user.email,
+                isAdmin:user.isAdmin
+            },
+            token:token,
             
         })
+
        }
     }
-} catch (error) {
-    
+} 
+catch (error) {
+res.status(500).json({
+    message:error.message
+})    
 }
 }
 export default loginController
