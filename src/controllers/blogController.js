@@ -28,9 +28,7 @@ class blogController {
   static async getBlog(req, res) {
     try {
       const { id } = req.params; // using ES6
-     
-
-      const blog = await Blog.findone({_id:id});
+      const blog = await Blog.findById(req.params.id)
       if (!blog) {
         return res.status(404).json({
           message: `Blog with id: ${id} was not found`

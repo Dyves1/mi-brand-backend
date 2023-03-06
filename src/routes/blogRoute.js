@@ -1,5 +1,4 @@
 import express from "express";
-import { verify } from "jsonwebtoken";
 import blogController from "../controllers/blogController.js";
 import verifyIsAdmin from "../middleware/verifyIsAdmin.js"
 

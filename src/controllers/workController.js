@@ -27,8 +27,8 @@ class workController {
   static async getWork(req, res) {
     try {
       const { id } = req.params; // using ES6
-      const work = await Work.findone({_id:id});
-      if (!blog) {
+      const work = await Work.findById(req.params.id)
+      if (!work) {
         return res.status(404).json({
           message: `Work with id: ${id} was not found`
         });
