@@ -4,6 +4,7 @@ import signupRoute from "./signupRoute.js"
 import loginRoute from "./loginRoute.js"
 import workRoute from "./workRoute.js"
 import commentRoute from "./commentRoute.js"
+import messageRoute from "./messageRoute.js"
 import multer  from "multer";
 import Blog from "../model/blog.js"
 const app =express()
@@ -74,5 +75,6 @@ router.use("/signup",signupRoute)
 router.use("/login", loginRoute)
 router.use("/works", workRoute)
 router.use("/comments", commentRoute)
+router.use("/messages", messageRoute)
 
 export default router
