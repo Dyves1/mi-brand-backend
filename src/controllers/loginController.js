@@ -25,12 +25,14 @@ try {
         // const token = jwt.sign({userId:user.email},process.env.SECRETE_KEY,{expiresIn:"2h"})
            const token =jwt.sign({userId:user.email,isAdmin:user.isAdmin},process.env.SECRETE_KEY,{expiresIn:"2d"})
         return res.status(200).json({
+            ok:true,
             data:{
                 
                 email:user.email,
                 isAdmin:user.isAdmin
             },
             token:token,
+            message:"Login successfully"
             
         })
 

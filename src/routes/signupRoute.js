@@ -9,4 +9,5 @@ const router =Express.Router();
 router.post("/", signupController.getUser);
 router.get("/", verifyIsAdmin,signupController.allUsers)
 
+
 export default router

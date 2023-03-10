@@ -6,7 +6,8 @@ const router = express.Router();
 
 router.get("/", workController.getWorks);
 router.get("/:id", workController.getWork)
-router.post("/", verifyIsAdmin, workController.createWork)
+// router.post("/", verifyIsAdmin, workController.createWork)
+router.post("/", workController.createWork)
 router.put("/:id", verifyIsAdmin, workController.updateWork)
 router.delete("/:id", verifyIsAdmin, workController.deleteWork)
 export default router

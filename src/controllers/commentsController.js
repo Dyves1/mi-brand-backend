@@ -36,7 +36,8 @@ class commentsController {
         });
       } else {
         return res.status(200).json({
-          data: comment
+          data: comment,
+          ok:true
         });
       }
     } catch (error) {

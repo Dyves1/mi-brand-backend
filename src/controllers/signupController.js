@@ -3,7 +3,7 @@ import User from '../model/user.js'
 
 class signupController{
     static async getUser(req, res) {
-    const {fullname, email ,password,isAdmin} =req.body;
+    const {fullname, email ,password} =req.body;
 if (!fullname || !email|| !password) 
 {return res.status(400).json({
   message:"names, email and password are all required"})}
@@ -15,19 +15,41 @@ if (!fullname || !email|| !password)
     })
   }
 else{
+ 
     try {
     // harsh password
     const hashedPassword = await bcrypt.hash(password, 10)
+    
 
+    const allUser= await User.find()
+    if(allUser == ''){
+       const newUser= await User.create({fullname,email,password:hashedPassword,isAdmin:true})
+       console.log(newUser)
+       return res.status(201).json({
+        
+            message:"Successfully created",
+            data:newUser,
+            ok:true
+        })
+    }
+    else{
+        const newUser= await User.create({fullname,email,password:hashedPassword,isAdmin:false})
+      console.log(newUser)
+        return res.status(201).json({
+            message:"Successfully created",
+            data:newUser,
+            ok:true
+        })
+    }
     // create
 
-    const newUser = await User.create({fullname,email,isAdmin,password: hashedPassword})
+//     const newUser = await User.create({fullname,email,isAdmin:true,password: hashedPassword})
   
-    console.log(newUser)
-  res.status(201).json({
-    message:"New User created successfully",
-    data: newUser
-})
+//     console.log(newUser)
+//   res.status(201).json({
+//     message:"New User created successfully",
+//     data: newUser
+// })
 
 
 

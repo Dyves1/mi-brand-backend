@@ -67,7 +67,8 @@ else {
       const newWork = await Work.create({image,title, content});
       res.status(201).json({
         message: "New work created successfully",
-        data: newWork
+        data: newWork,
+        ok:true
       });
     } catch (error) {
         return res.status(500).json({

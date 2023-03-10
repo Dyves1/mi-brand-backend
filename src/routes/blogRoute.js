@@ -6,7 +6,12 @@ const router = express.Router();
 
 router.get("/", blogController.getBlogs);
 router.get("/:id", blogController.getBlog)
-router.post("/", verifyIsAdmin, blogController.createBlog)
+// router.post("/", verifyIsAdmin, blogController.createBlog)
+router.post("/",  blogController.createBlog)
 router.put("/:id", verifyIsAdmin, blogController.updateBlog)
 router.delete("/:id", verifyIsAdmin, blogController.deleteBlog)
 export default router
+
+
+
+

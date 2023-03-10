@@ -16,7 +16,7 @@ const app = express();
 
 // use of cors and body parse
 app.use(cors())
-app.use(bodyParser.json())
+app.use(bodyParser.json({limit:"50mb",type:"application/json"}))
 
 // route - home route
 app.get("/", (req, res)=> {

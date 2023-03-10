@@ -65,13 +65,15 @@ else {
     try {
       const { image,title, content } = req.body;
       const newBlog = await Blog.create({image,title, content});
-
+      console.log(newBlog)
 
          
           return res.status(201).json({
         message: "New blog created successfully",
-        data: newBlog
-      })}
+        data: newBlog,
+        ok:true
+      })
+    }
      catch (error) {
         return res.status(500).json({
             message: "no new blog created"
