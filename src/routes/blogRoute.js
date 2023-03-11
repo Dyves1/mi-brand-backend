@@ -8,8 +8,10 @@ router.get("/", blogController.getBlogs);
 router.get("/:id", blogController.getBlog)
 // router.post("/", verifyIsAdmin, blogController.createBlog)
 router.post("/",  blogController.createBlog)
-router.put("/:id", verifyIsAdmin, blogController.updateBlog)
-router.delete("/:id", verifyIsAdmin, blogController.deleteBlog)
+router.put("/:id", blogController.updateBlog)
+// router.put("/:id", verifyIsAdmin, blogController.updateBlog)
+// router.delete("/:id", verifyIsAdmin, blogController.deleteBlog)
+router.delete("/:id", blogController.deleteBlog)
 export default router
 
 
