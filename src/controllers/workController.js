@@ -128,6 +128,7 @@ else {
         }
           return res.status(200).json({
           message: "Work deleted successfully",
+          ok:true
         });
       }
     } catch (error) {

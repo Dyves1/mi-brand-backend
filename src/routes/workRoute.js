@@ -8,7 +8,8 @@ router.get("/", workController.getWorks);
 router.get("/:id", workController.getWork)
 // router.post("/", verifyIsAdmin, workController.createWork)
 router.post("/", workController.createWork)
-router.put("/:id", verifyIsAdmin, workController.updateWork)
+// router.put("/:id", verifyIsAdmin, workController.updateWork)
+router.put("/:id", workController.updateWork, verifyIsAdmin)
 // router.delete("/:id", verifyIsAdmin, workController.deleteWork)
 router.delete("/:id", workController.deleteWork)
 export default router

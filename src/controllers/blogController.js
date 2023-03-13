@@ -133,6 +133,7 @@ else {
         }
           return res.status(200).json({
           message: "Blog deleted successfully",
+          ok:true
         });
       }
     } catch (error) {
