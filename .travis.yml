@@ -6,4 +6,4 @@ env:
 - NODE_ENV-ENV="production"; SESSION_SECRET="la li"
 servicese: 
 - mongodb  
-script: gulp travis
+
