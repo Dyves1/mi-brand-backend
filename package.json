@@ -2,7 +2,7 @@
   "name": "mi-brand-backend",
   "version": "1.0.0",
   "description": "My brand backend",
-  "main": "server.js",
+  "main": "src/server.js",
   "type": "module",
   "scripts": {
     "dev": "nodemon src/server.js"
