@@ -1,0 +1,21 @@
+services:
+  - name: my-app
+    env:
+      NODE_ENV: production
+    buildCommand: npm run build
+    startCommand: npm start
+    healthCheckPath: /
+    envVars:
+      - key: MONGODB_URI
+        value: mongodb+srv://Dyves:D!dives12@mybrand.rdag7fl.mongodb.net/MyPortifolio
+    envSecrets:
+      - name: DBUSER
+        from: render/secret/dbuser
+      - name: DBPASSWORD
+        from: render/secret/dbpassword
+    ports:
+      - 8080
+    healthCheckTimeout: 5000
+    build:
+      sourceDir: src
+      outputDir: build
