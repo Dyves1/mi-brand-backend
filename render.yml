@@ -4,6 +4,8 @@ services:
       NODE_ENV: production
     buildCommand: npm run build
     startCommand: npm start
+    buildCommand: npm run build
+    startCommand: node server.js
     healthCheckPath: /
     envVars:
       - key: MONGODB_URI
