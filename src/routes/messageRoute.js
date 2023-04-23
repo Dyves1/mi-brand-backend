@@ -1,12 +1,11 @@
-// import express from "express";
-// import messageController from "../controllers/messageController.js";
-// import verifyUser from "../middleware/verifyUser.js"
-// import verifyIsAdmin from "../middleware/verifyIsAdmin.js"
+import express from "express";
+import messageController from "../controllers/messageController.js";
 
-// const router = express.Router();
 
-// router.get("/", messageController.getMessages);
-// router.get("/:id", messageController.getMessage)
-// router.post("/", messageController.createMessage)
-// router.delete("/:id", verifyIsAdmin, messageController.deleteMessage)
-// export default router
+const router = express.Router();
+
+router.get("/", messageController.getMessages);
+router.get("/:id", messageController.getMessage)
+router.post("/", messageController.createMessage)
+router.delete("/:id", messageController.deleteMessage)
+export default router
