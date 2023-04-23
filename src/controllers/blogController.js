@@ -1,7 +1,4 @@
 import Blog from "../model/blog.js"
-// import { blogs } from "../model/dummy.js";
-// import errorFunc from "../utils/errorFunc.js";
-
 
 class blogController {
   // CRUD (Create, Read, Update, Delete) Operation 

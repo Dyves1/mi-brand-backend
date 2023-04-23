@@ -1,19 +1,24 @@
-import mongoose from "mongoose";
+import mongoose from 'mongoose';
 
 const commentSchema = new mongoose.Schema({
-email:{
-    type:String,
-    required:true
-},
- content: {
-    type:String,
+  text: {
+    type: String,
     required: true
- },
- createdAt:  {
-    type:String,
-    default: Date.now
- }
-})
-const Comment = mongoose.model("Comment",commentSchema)
+  },
+  blog: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Blog',
+    required: true
+  },
+  user: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User',
+    required: true
+  }
+}, {
+  timestamps: true
+});
 
-export default Comment
+const Comment = mongoose.model('Comment', commentSchema);
+
+export default Comment;
